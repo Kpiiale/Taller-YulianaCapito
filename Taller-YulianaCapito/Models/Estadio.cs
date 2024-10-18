@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Taller_YulianaCapito.Models
 {
@@ -13,6 +14,9 @@ namespace Taller_YulianaCapito.Models
         [Range (0,50000)]
         public int Capacidad { get; set; }
         public Equipo Equipo { get; set; }
+
+        [ForeignKey("Equipo")]
+
         public int EquipoId { get; set; } 
 
 
