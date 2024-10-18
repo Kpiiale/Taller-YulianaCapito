@@ -13,7 +13,7 @@ namespace Taller_YulianaCapito.Models
         [Range (0,50000)]
         public int Capacidad { get; set; }
         public Equipo Equipo { get; set; }
-        public int EquipoId { get; set;
+        public int EquipoId { get; set; } 
 
 
     }
