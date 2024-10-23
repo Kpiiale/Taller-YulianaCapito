@@ -12,9 +12,10 @@ namespace Taller_YulianaCapito.Models
         [MaxLength(100)]
         public string Ciudad { get; set; }
         public int Titulos { get; set; }
-        public string AceptaExtranjeros {  get; set; }
-        public Jugadores Jugadores { get; set; } 
+        public string AceptaExtranjeros { get; set; }
+        public Jugadores Jugadores { get; set; }
 
         [ForeignKey("Jugadores")]
         public int IdJugador { get; set; }
+    }
 }

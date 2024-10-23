@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Taller_YulianaCapito.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Taller_YulianaCapitoContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Taller_YulianaCapitoContext") ?? throw new InvalidOperationException("Connection string 'Taller_YulianaCapitoContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
