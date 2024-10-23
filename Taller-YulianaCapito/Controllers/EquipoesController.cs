@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Taller_YulianaCapito.Data;
+using Taller_YulianaCapito.Models;
 
-namespace Taller_YulianaCapito.Models
+namespace Taller_YulianaCapito.Controllers
 {
     public class EquipoesController : Controller
     {
@@ -21,8 +22,7 @@ namespace Taller_YulianaCapito.Models
         // GET: Equipoes
         public async Task<IActionResult> Index()
         {
-            var taller_YulianaCapitoContext = _context.Equipo.Include(e => e.Jugadores);
-            return View(await taller_YulianaCapitoContext.ToListAsync());
+            return View(await _context.Equipo.ToListAsync());
         }
 
         // GET: Equipoes/Details/5
@@ -34,7 +34,6 @@ namespace Taller_YulianaCapito.Models
             }
 
             var equipo = await _context.Equipo
-                .Include(e => e.Jugadores)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (equipo == null)
             {
@@ -47,7 +46,6 @@ namespace Taller_YulianaCapito.Models
         // GET: Equipoes/Create
         public IActionResult Create()
         {
-            ViewData["IdJugador"] = new SelectList(_context.Set<Jugadores>(), "Id", "Id");
             return View();
         }
 
@@ -56,7 +54,7 @@ namespace Taller_YulianaCapito.Models
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdJugador")] Equipo equipo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,Estadio")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +62,6 @@ namespace Taller_YulianaCapito.Models
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdJugador"] = new SelectList(_context.Set<Jugadores>(), "Id", "Id", equipo.IdJugador);
             return View(equipo);
         }
 
@@ -81,7 +78,6 @@ namespace Taller_YulianaCapito.Models
             {
                 return NotFound();
             }
-            ViewData["IdJugador"] = new SelectList(_context.Set<Jugadores>(), "Id", "Id", equipo.IdJugador);
             return View(equipo);
         }
 
@@ -90,7 +86,7 @@ namespace Taller_YulianaCapito.Models
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdJugador")] Equipo equipo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,Estadio")] Equipo equipo)
         {
             if (id != equipo.Id)
             {
@@ -117,7 +113,6 @@ namespace Taller_YulianaCapito.Models
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdJugador"] = new SelectList(_context.Set<Jugadores>(), "Id", "Id", equipo.IdJugador);
             return View(equipo);
         }
 
@@ -130,7 +125,6 @@ namespace Taller_YulianaCapito.Models
             }
 
             var equipo = await _context.Equipo
-                .Include(e => e.Jugadores)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (equipo == null)
             {

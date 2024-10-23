@@ -13,11 +13,7 @@ namespace Taller_YulianaCapito.Models
         public string Ciudad { get; set; }
         [Range (0,50000)]
         public int Capacidad { get; set; }
-        public Equipo Equipo { get; set; }
-
-        [ForeignKey("Equipo")]
-
-        public int EquipoId { get; set; } 
+        
 
 
     }
