@@ -1,0 +1,73 @@
+﻿/* Fue realizado en parte por ChatGPT */
+.navbar {
+    background-color: darkgreen !important; 
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.navbar-brand {
+    font-family: 'Rock Salt', sans-serif;
+    color: peru !important;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-family: 'Arial', sans-serif; 
+    color: white !important; 
+    font-size: 1.1rem;
+    font-weight: bold; 
+}
+
+    .nav-link:hover {
+        color: olivedrab !important; 
+    }
+
+.navbar-toggler {
+    border-color: white;
+}
+
+h1 {
+    color: black !important;
+    font-size: 50px !important;
+    font-weight: bold !important;
+}
+h2 {
+    color: black;
+    font-size: 30px !important;
+    font-weight: bold !important;
+}
+h3 {
+    color: black;
+    font-size: 30px !important;
+    font-weight: bold !important;
+}
+h4 {
+    color: black;
+    font-size: 30px !important;
+    font-weight: bold !important;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+
+.btn-primary {
+    background-color: black;
+    border-color: #0056b3 !important;
+}
+
+    .btn-primary:hover {
+        background-color: red;
+    }

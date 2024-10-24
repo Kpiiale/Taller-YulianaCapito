@@ -20,10 +20,18 @@ namespace Taller_YulianaCapito.Controllers
         }
 
         // GET: Jugadores
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? equipoId)
+            // Modificado con ChatGPT debido a que tenia un error de NullPointerException
         {
-            var taller_YulianaCapitoContext = _context.Jugadores.Include(j => j.Equipo);
-            return View(await taller_YulianaCapitoContext.ToListAsync());
+            ViewBag.Equipos = _context.Equipo.ToList(); 
+            var jugadores = _context.Jugadores.Include(j => j.Equipo).ToList();
+
+            if (equipoId.HasValue)
+            {
+                jugadores = jugadores.Where(j => j.IdEquipo == equipoId.Value).ToList();
+            }
+
+            return View(jugadores);
         }
 
         // GET: Jugadores/Details/5

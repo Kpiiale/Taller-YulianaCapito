@@ -11,7 +11,7 @@ namespace Taller_YulianaCapito.Models
         public int Posicion {  get; set; }
         public int Edad {  get; set; }
 
-        public Equipo Equipo { get; set; }
+        public Equipo? Equipo { get; set; }
 
         [ForeignKey("Equipo")]
         public int IdEquipo { get; set; }
